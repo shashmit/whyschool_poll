@@ -57,21 +57,28 @@ export const IdeaList: React.FC = () => {
 
   return (
     <div>
-      <h2>Vote for the Best Idea</h2>
+      <h2 style={{ marginBottom: '30px' }}>// VOTE_FOR_BEST</h2>
       {ideas.length === 0 ? (
-        <p>No ideas submitted yet.</p>
+        <div className="card">
+          <p>NO_IDEAS_FOUND_IN_DATABASE</p>
+        </div>
       ) : (
-        ideas.map((idea) => (
-          <div key={idea.id} className="card">
-            <h3>{idea.name}</h3>
-            {idea.tagline && <div className="badge">{idea.tagline}</div>}
-            <p>{idea.description}</p>
+        ideas.map((idea, index) => (
+          <div key={idea.id} className="card" style={{ backgroundColor: index % 2 === 0 ? '#fff' : '#f0f0f0' }}>
+            <h3 style={{ fontSize: '2rem', marginBottom: '10px' }}>{idea.name}</h3>
+            {idea.tagline && <div className="badge" style={{ backgroundColor: 'var(--accent-color)', color: '#000', marginBottom: '15px' }}>{idea.tagline}</div>}
+            <p style={{ fontSize: '1.2rem', marginBottom: '20px' }}>{idea.description}</p>
             <button 
               onClick={() => handleVote(idea.id)} 
               disabled={!!voted}
-              style={{ opacity: voted ? 0.5 : 1 }}
+              style={{ 
+                width: '100%', 
+                backgroundColor: voted === idea.id ? '#000' : 'var(--secondary-color)',
+                color: '#fff',
+                border: '4px solid #000'
+              }}
             >
-              {voted === idea.id ? 'Voted!' : 'Vote This'}
+              {voted === idea.id ? 'VOTE_REGISTERED' : 'VOTE_THIS_IDEA'}
             </button>
           </div>
         ))

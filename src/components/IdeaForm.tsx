@@ -40,43 +40,43 @@ export const IdeaForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) => 
 
   return (
     <div className="card primary">
-      <h2>Submit Your Idea</h2>
+      <h2 style={{ marginBottom: '20px' }}>// SUBMIT_IDEA</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name"><strong>Name *</strong></label>
+          <label htmlFor="name" style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold' }}>PROJECT_NAME:</label>
           <input
             id="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            placeholder="Project Name"
+            placeholder="ENTER_NAME_HERE"
           />
         </div>
         <div>
-          <label htmlFor="description"><strong>Description *</strong></label>
+          <label htmlFor="description" style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold' }}>DESCRIPTION:</label>
           <textarea
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-            placeholder="Describe your idea..."
+            placeholder="ENTER_DESCRIPTION_HERE"
             rows={4}
           />
         </div>
         <div>
-          <label htmlFor="tagline"><strong>Tagline</strong> (Optional)</label>
+          <label htmlFor="tagline" style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold' }}>TAGLINE (OPTIONAL):</label>
           <input
             id="tagline"
             type="text"
             value={tagline}
             onChange={(e) => setTagline(e.target.value)}
-            placeholder="A catchy slogan"
+            placeholder="ENTER_SLOGAN_HERE"
           />
         </div>
-        {error && <div style={{ color: 'red', fontWeight: 'bold' }}>{error}</div>}
-        <button type="submit" disabled={loading}>
-          {loading ? 'Submitting...' : 'Submit Idea'}
+        {error && <div style={{ backgroundColor: '#000', color: 'red', padding: '10px', fontWeight: 'bold', marginBottom: '20px' }}>ERROR: {error}</div>}
+        <button type="submit" disabled={loading} style={{ width: '100%', fontSize: '2rem' }}>
+          {loading ? 'PROCESSING...' : 'SUBMIT_TO_DATABASE'}
         </button>
       </form>
     </div>

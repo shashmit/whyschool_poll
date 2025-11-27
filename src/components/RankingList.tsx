@@ -34,14 +34,17 @@ export const RankingList: React.FC = () => {
 
   return (
     <div>
-      <h2>Top Ideas</h2>
+      <h2 style={{ marginBottom: '30px' }}>// TOP_RANKING</h2>
       {ideas.map((idea, index) => (
         <div key={idea.id} className={`card ${index === 0 ? 'primary' : index === 1 ? 'secondary' : index === 2 ? 'accent' : ''}`}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h3>#{index + 1} {idea.name}</h3>
-            <div className="badge" style={{ fontSize: '1.2rem' }}>{idea.votes} Votes</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '4px solid #000', paddingBottom: '15px', marginBottom: '15px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <span style={{ fontSize: '3rem', fontWeight: 'bold', lineHeight: 1 }}>#{index + 1}</span>
+              <h3 style={{ margin: 0, fontSize: '1.8rem', transform: 'none', background: 'transparent', color: 'inherit', padding: 0 }}>{idea.name}</h3>
+            </div>
+            <div className="badge" style={{ fontSize: '1.5rem', backgroundColor: '#000', color: '#fff' }}>{idea.votes}</div>
           </div>
-          {idea.tagline && <p><em>{idea.tagline}</em></p>}
+          {idea.tagline && <p style={{ fontWeight: 'bold', fontStyle: 'italic', marginBottom: '10px' }}>"{idea.tagline}"</p>}
           <p>{idea.description}</p>
         </div>
       ))}
