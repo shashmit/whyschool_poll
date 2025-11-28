@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import type { Idea } from '../types';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:54321/functions/v1/poll-api';
+// const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:54321/functions/v1/poll-api';
+const API_URL =""
 
 export const IdeaList: React.FC = () => {
   const [ideas, setIdeas] = useState<Idea[]>([]);
